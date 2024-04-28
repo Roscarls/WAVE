@@ -1,0 +1,309 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+.progress-bar{
+    position: absolute;
+    width: 500px;
+    height: 3em;
+    background-color: #B8B8B8;
+    border-radius: 1.5em;
+    /* border: #ff0000 solid 1.5px; */
+    color: #00FF00;
+    z-index: 9999;
+    top: 50%;
+    left: 38%;
+}
+.progress-bar::before {
+    content: attr(data-label);
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: .5em;
+    top: .5em;
+    bottom: .5em;
+    width: calc(var(--width, 0) * 1%);
+    min-width: 2rem;
+    max-width: calc(100% - 1em);
+    background-color: #111;
+    border-radius: 1em;
+    padding: 1em;
+}
+.clickhere{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    position: absolute;
+    width: 250px;
+    height: 3rem;
+    background-color: #00FF00;
+    color: #111;
+    font-size:30px;
+    border-radius: 1.5em;
+    top: 50%;
+    left: 45%;
+    cursor: pointer;
+    z-index: 9999;
+    border: 5px solid #fff;
+}
+.clickhere:hover{
+    background-color: #ff0000;
+    color: #fff;
+}
+.draw{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}
+.draw img{
+    width: 600px;
+    height: auto;
+}
+
+/* Album */
+.album{
+    display: none;
+    width: 100%;
+    height: 1000px;
+    background-color: #faf8d7;
+}
+
+/* Image Cover */
+.F-cover{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    box-sizing: border-box;
+    padding: 1rem;
+}
+.HBD-img{
+    width: auto;
+    height: 100%;
+    padding-left: 5%;
+}
+
+/* Book Content */
+.book{
+    width: 750px;
+    height: 850px;
+    position: relative;
+    top: 5%;
+    left: 45%;
+    transition-duration: 1s;
+    perspective: 1500;
+}
+input{
+    display: none;
+}
+.cover, .back-cover{
+    background-color: #FF5454;
+    width: 100%;
+    height: 100%;
+    border-radius: 0 15px 15px 0;
+    box-shadow: 0 0 5px rgb(41,41,41);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cover{
+    position: absolute;
+    z-index: 4;
+    transform-origin: center left;
+    transition: transform 1s;
+}
+.cover label{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.back-cover{
+    position: block;
+    z-index: -1;
+}
+.page{
+    z-index: 1;
+    position: absolute;
+    background-color: #fff;
+    width: 730px;
+    height: 830px;
+    margin-top: 10px;
+    border-radius: 0 15px 15px 0;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition-duration: 1.5s;
+}
+.front-page{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    box-sizing: border-box;
+    padding: 1rem;
+}
+.back-page{
+    transform: rotateY(180deg);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    z-index: 99;
+}
+.next, .prev{
+    cursor: pointer;
+}
+#page1{
+    z-index: 3;
+}
+#page2{
+    z-index: 2;
+}
+#page3{
+    z-index: 1;
+}
+#page4{
+    z-index: 0;
+}
+#checkbox-cover:checked ~ .book{
+    transform: translateX(200deg);
+}
+#checkbox-cover:checked ~ .book .cover{
+    transition: transform 1.5s , z-index 0.5s 0.5s;
+    transform: rotateY(-180deg);
+    z-index: 0;
+}
+#checkbox-cover:checked ~ .book .F-cover{
+    transform: rotateY(-180deg);
+    z-index: 0;
+}
+
+#checkbox-page1:checked ~ .book #page1{
+    transform: rotateY(-180deg);
+    z-index: 1;
+}
+#checkbox-page2:checked ~ .book #page2{
+    transform: rotateY(-180deg);
+    z-index: 2;
+}
+#checkbox-page3:checked ~ .book #page3{
+    transform: rotateY(-180deg);
+    z-index: 3;
+}
+
+
+/* Content Info */
+h1{
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    font-family: "Itim", cursive;
+}
+.ERR{
+    position: absolute;
+    width: 30%;
+    /* border: 1px solid red; */
+    transform: rotate(-15deg);
+    left: 8%;
+}
+.group{
+    position: relative;
+    width: 65%;
+    height: auto;
+    left: 20%;
+    top: 15%;
+}
+p{
+    position: relative;
+    width: 50%;
+    left: 50%;
+    font-size: 18px;
+    font-family: "Itim", cursive;
+}
+/* Page 2 */
+.girl{
+    position: relative;
+    width: 25%;
+    left: 5%;
+    top: -5%;
+}
+.sad{
+    position: relative;
+    width: 30%;
+    left: 30%;
+    top: 2%;
+    transform: rotate(15deg);
+}
+.ladyboy{
+    position: absolute;
+    width: 30%;
+    left: 55%;
+    top: 40%;
+    border-radius: 10px;
+}
+.big{
+    position: absolute;
+    width: 25%;
+    left: 10%;
+    top: 40%;
+    border-radius: 15px;
+}
+.abang{
+    position: absolute;
+    width: 25%;
+    left: 10%;
+    top: 65%;
+    border-radius: 15px;
+}
+/* Page 3 */
+.monk{
+    position: relative;
+    width: 30%;
+}
+.stand{
+    position: absolute;
+    width: 35%;
+    left: 50%;
+    top: 8%;
+    border-radius: 15px;
+}
+.three{
+    display: grid;
+    grid-template-areas: 
+    "one two three";
+}
+.perspec{
+    display: grid;
+    grid-template-areas: 
+    "I II";
+}
+/* Page 4 */
+.cupud{
+    position: absolute;
+    width: 100%;
+    top: 10%;
+    left: 0%;
+    z-index: -1;
+}
+.left{
+    position: relative;
+    width: 30%;
+    top: 30%;
+    left: 10%;
+    border-radius: 15px 0 0 15px;
+    z-index: 0;
+}
+.right{
+    position: relative;
+    width: 40%;
+    left: 9.4%;
+    top: 30%;
+    border-radius: 0 15px 15px 0;
+    z-index: 0;
+}
